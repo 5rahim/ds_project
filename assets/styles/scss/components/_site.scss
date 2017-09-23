@@ -1,0 +1,115 @@
+.top {
+	background-image: url('../../../images/ds_background.png?');
+	height: 100vh;
+}
+
+.wrap {
+	position: relative;
+	&.wrap-center {
+		text-align: center;
+		display: flex;
+		align-items: center;
+		height: calc(100% - 120px);
+		position: relative;
+		h2 {
+			position: absolute;
+			width: 100%;
+			margin: 100px 0 0 0;
+			color: $white;
+			font-weight: 200;
+		}
+	}
+}
+
+.logo {
+	background-image: url('../../../images/ds_logo.png');
+	width: 380px;
+	height: 156px;
+	margin: auto;
+	cursor: pointer;
+}
+
+.scroll_to {
+	position: fixed;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	img {
+		cursor: pointer;
+		transition: all .2s linear;
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+}
+
+.infos {
+	position: relative;
+	background-image: $white;
+	padding: 20px;
+	.grid {
+		margin: 60px 6%;
+		.column {
+			text-align: center;
+			&.text {
+				padding-top: 4em;
+				padding-bottom: 20px;
+				h1 {
+					font-weight: 300;
+					color: #585858;
+					margin: 0;
+					margin-bottom: 20px;
+				}
+				p {
+					color: rgba(black,0.55);
+					font-size: 1.25em;
+				}
+			}
+		}
+	}
+}
+
+.nav {
+	position: fixed;
+	top: 0;
+	color: $white;
+	height: 42px;
+	width: 100%;
+	z-index: 2;
+	transition: all .15s linear;
+	&.scrolling {
+		background-color: $white;
+		.logo_mini {
+			background-image: url('../../../images/ds_logo_mini_colored.png');
+		}
+		.menu {
+			a {
+				color: $color-one;
+				height: 100%;
+			}
+		}
+	}
+	.logo_mini {
+		width: 202px;
+		height: 42px;
+		background-image: url('../../../images/ds_logo_mini.png');
+		float: left;
+		margin: 0 20px;
+	}
+	.menu {
+		float: left;
+		height: 42px;
+		line-height: 42px;
+		a {
+			color: $white;
+			opacity: 0.65;
+			margin: 0 10px;
+			height: 100%;
+			display: inline-block;
+			&:hover {
+				opacity: 1;
+			}
+		}
+	}
+}
