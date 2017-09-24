@@ -853,4 +853,19 @@ a {
       .nav .menu a:hover {
         opacity: 1; }
 
+.footer {
+  background-color: #333333;
+  padding: 5em 0;
+  text-align: center; }
+  .footer .copyright {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: .9em;
+    margin-bottom: 1.5em; }
+  .footer img {
+    opacity: 1;
+    transition: all .15s linear;
+    cursor: pointer; }
+    .footer img:hover {
+      opacity: 0.5; }
+
 /*# sourceMappingURL=ds_style.css.map */

@@ -116,3 +116,22 @@
 		}
 	}
 }
+
+.footer {
+	background-color: #333333;
+	padding: 5em 0;
+	text-align: center;
+	.copyright {
+		color: rgba($white,0.6);
+		font-size: .9em;
+		margin-bottom: 1.5em;
+	}
+	img {
+		opacity: 1;
+		transition: all .15s linear;
+		cursor: pointer;
+		&:hover {
+			opacity: 0.5;
+		}
+	}
+}
