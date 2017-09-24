@@ -784,6 +784,8 @@ a {
   height: 156px;
   margin: auto;
   cursor: pointer; }
+  .logo.logo-prices {
+    background-image: url("../../../images/ds_logo_tarifs.png"); }
 
 .scroll_to {
   position: fixed;
