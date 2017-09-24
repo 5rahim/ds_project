@@ -5,7 +5,7 @@ import Server from './Server';
 
 debug('ts-express:server');
 
-const port = normalizePort(process.env.PORT || 4545);
+const port = normalizePort(process.env.PORT || 80001);
 Server.set('port', port);
 
 console.log(`Server listening on port ${port}`);
