@@ -1,11 +1,11 @@
 import { Request, Response, NextFunction } from 'express';
 
-export class ShowPricesAction {
+export class ShowCompetencyAction {
 
     public invoke(req: Request, res: Response, next: NextFunction) {
-        res.render('tarifs', { pageTitle: 'Tarifs' });
+        res.render('competency', { pageTitle: 'Expertise' });
     }
 
 }
 
-export default new ShowPricesAction;
+export default new ShowCompetencyAction;

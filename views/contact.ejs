@@ -1,0 +1,21 @@
+<% include partials/header.ejs %>
+
+<div class="contact">
+    <div class="content">
+        <form action="send" method="POST">
+            <input type="text" placeholder="Prénom" name="lastname" class="field">
+            <input type="text" placeholder="Nom" name="firstname" class="field">
+            <input type="email" placeholder="Adresse mail" name="email" class="field">
+            <input type="text" placeholder="Numéro de téléphone (+225)" name="phonenumber" class="field">
+            <textarea name="description" id="" cols="30" rows="10" placeholder="Description du projet" class="field"></textarea>
+            <textarea name="features" id="" cols="30" rows="10" placeholder="Fonctionnalités souhaitées" class="field"></textarea>
+            <select name="service" id="" class="field">
+                <option value="0">Choisir un service</option>
+                <%- serviceOptions %>
+            </select>
+            <button class="button white">Envoyer</button>
+        </form>
+    </div>
+</div>
+
+<% include partials/footer.ejs %>

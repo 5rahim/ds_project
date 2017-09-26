@@ -1,6 +1,72 @@
 .top {
 	background-image: url('../../../images/ds_background.png?');
 	height: 100vh;
+	overflow: hidden;
+}
+
+.clouds {
+	width: 100%;
+	overflow: hidden;
+	position: absolute;
+	height: 380px;
+	top: 70px;
+}
+
+.cloud {
+	background-repeat: no-repeat;
+	display: block;
+	position: absolute;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-name: cloud-move;
+	-webkit-animation-timing-function: linear;
+}
+
+.ie7 .cloud, .ie6 .cloud {
+	z-index: -1;
+}
+
+.cloud-1 {
+	background-image: url('../../../images/cloud-1.png');
+	height: 61px;
+	left: 8%;
+	top: 20px;
+	width: 176px;
+	animation-duration: 40s;
+}
+.cloud-2 {
+	background-image: url('../../../images/cloud-2.png');
+	height: 65px;
+	left: -5%;
+	top: 200px;
+	width: 189px;
+	animation-duration: 45s;
+}
+.cloud-3 {
+	background-image: url('../../../images/cloud-3.png');
+	height: 61px;
+	left: 90%;
+	top: 0;
+	width: 176px;
+	animation-duration: 30s;
+}
+.cloud-4 {
+	background-image: url('../../../images/cloud-4.png');
+	height: 31px;
+	left: 35%;
+	top: 300px;
+	width: 274px;
+	-webkit-animation-duration: 50s;
+}
+
+@-webkit-keyframes cloud-move {
+	from {
+		left: 100%;
+		-webkit-transform: translateX(0%);
+	}
+	to {
+		left: -50%;
+		-webkit-transform: translateX(-100%);
+	}
 }
 
 .wrap {
@@ -13,22 +79,32 @@
 		position: relative;
 		h2 {
 			position: absolute;
+			font-size: 1.5em;
 			width: 100%;
-			margin: 100px 0 0 0;
+			margin: 70px 0 0 0;
 			color: $white;
 			font-weight: 200;
+			@include tablet {
+				margin: 100px 0 0 0;
+			}
 		}
 	}
 }
 
 .logo {
 	background-image: url('../../../images/ds_logo.png');
-	width: 380px;
-	height: 156px;
+	background-repeat: no-repeat;
+	width: 250px;
+	height: 100px;
 	margin: auto;
 	cursor: pointer;
-	&.logo-prices {
-		background-image: url('../../../images/ds_logo_tarifs.png');
+	background-size: contain;
+	@include tablet {
+		width: 380px;
+		height: 156px;
+	}
+	&.logo-competency {
+		background-image: url('../../../images/ds_logo_competency.png');
 	}
 }
 
@@ -50,14 +126,26 @@
 .infos {
 	position: relative;
 	background-image: $white;
-	padding: 20px;
 	.grid {
-		margin: 60px 6%;
+		padding: 30px 6%;
+		&.colored {
+			background-color: $color-one;
+			background-image: url("../../../images/ds_background.png");
+			background-position: top center;
+			.column {
+				h1, p {
+					color: $white !important;
+				}
+			}
+		}
 		.column {
 			text-align: center;
 			&.text {
-				padding-top: 4em;
+				padding-top: 0;
 				padding-bottom: 20px;
+				@include desktop {
+					padding-top: 4em;
+				}
 				h1 {
 					font-weight: 300;
 					color: #585858;
@@ -69,6 +157,9 @@
 					font-size: 1.25em;
 				}
 			}
+			img {
+				max-width: 100%;
+			}
 		}
 	}
 }
@@ -77,12 +168,18 @@
 	position: fixed;
 	top: 0;
 	color: $white;
-	height: 42px;
+	height: 60px;
 	width: 100%;
-	z-index: 2;
+	z-index: 4;
 	transition: all .15s linear;
+	background-color: rgba($black,0.1);
+	@include tablet {
+		background-color: transparent;
+		height: 42px;
+	}
 	&.scrolling {
 		background-color: $white;
+		box-shadow: 0 5px 44px rgba(0,0,0,0.05);
 		.logo_mini {
 			background-image: url('../../../images/ds_logo_mini_colored.png');
 		}
@@ -98,12 +195,20 @@
 		height: 42px;
 		background-image: url('../../../images/ds_logo_mini.png');
 		float: left;
+		display: none;
 		margin: 0 20px;
+		@include tablet {
+			display: inline-block;
+		}
 	}
 	.menu {
 		float: left;
 		height: 42px;
 		line-height: 42px;
+		display: none;
+		@include tablet {
+			display: block;
+		}
 		a {
 			color: $white;
 			opacity: 0.65;
@@ -115,12 +220,63 @@
 			}
 		}
 	}
+	.nav-button {
+		height: 100%;
+		line-height: 4.5;
+		@include desktop {
+			display: none;
+		}
+		&.scrolling {
+			i {
+				color: $color-one;
+			}
+		}
+		i {
+			font-size: 2.2em;
+			padding: 0 0.4em;
+			cursor: pointer;
+			transition: all .15s linear;
+			&:hover {
+				opacity: 0.5;
+			}
+		}
+	}
+}
+
+.responsive-nav {
+	display: none;
+	position: fixed;
+	top: 0;
+	z-index: 3;
+	background-color: #3d3d3d;
+	width: 100%;
+	padding: 70px 10px 10px;
+	&.show {
+		display: block;
+	}
+	a {
+		color: rgba($white, 0.9);
+		display: block;
+		width: 100%;
+		padding: 10px 0;
+		text-align: center;
+		border-bottom: 1px solid rgba($white,0.15);
+		&:nth-last-child(1) {
+			border-bottom-width: 0;
+		}
+	}
+	@include tablet {
+		display: none;
+	}
 }
 
 .footer {
 	background-color: #333333;
-	padding: 5em 0;
+	padding: 2em 0;
 	text-align: center;
+	 @include tablet {
+		 padding: 5em 0;
+	 }
 	.copyright {
 		color: rgba($white,0.6);
 		font-size: .9em;
@@ -132,6 +288,121 @@
 		cursor: pointer;
 		&:hover {
 			opacity: 0.5;
+		}
+	}
+}
+
+img {
+	max-width: 100%;
+}
+
+.content {
+	padding: 20px;
+}
+
+.button {
+	display: inline-block;
+	position: relative;
+	padding: .6em 2.2em;
+	border: 3px $color-one solid;
+	cursor: pointer;
+	&:hover {
+		background-color: $color-one;
+		color: $white !important;
+	}
+	&.white {
+		background-color: transparent;
+		border-color: $white;
+		color: $white !important;
+		&:hover {
+			background-color: $white;
+			color: #3d3d3d !important;
+		}
+	}
+}
+
+.show {
+	.grid {
+		margin: 4em 0;
+		border-bottom: 1px #ddd solid;
+		@include desktop {
+			border: none;
+		}
+		.column {
+			h3 {
+				font-size: 1.6em;
+				color: rgba($black,0.7);
+			}
+			p {
+				color: rgba($black,0.55);
+			}
+			.image {
+
+			}
+		}
+	}
+}
+
+h2 {
+	font-size: 2.5em;
+	font-weight: 300;
+	color: rgba($black,0.4);
+	strong {
+		color: $color-one;
+		text-decoration: underline;
+	}
+}
+
+.technologies, .whyus {
+	text-align: center;
+	margin-top: 100px;
+	margin-bottom: 50px;
+}
+
+.whyus {
+	margin-bottom: 8em;
+	p {
+		font-size: 1.3em;
+		color: rgba($black,0.5);
+		padding: 0 .8em;
+		@include desktop {
+			padding: 0 3em;
+		}
+	}
+}
+
+.field {
+	padding: 1em 1em;
+	border: none;
+	width: 100%;
+	max-width: 100%;
+	min-width: 100%;
+	margin-bottom: 1em;
+	outline: 0;
+	transition: all .15s linear;
+	&:focus {
+		box-shadow: inset 0 -4px 0 0 rgba($color-one,1);
+	}
+	&:after {
+		content: '';
+		clear: both;
+	}
+}
+
+textarea {
+	font-family: inherit;
+}
+
+.contact {
+	background-color: #3d3d3d;
+	width: 100%;
+	position: relative;
+	padding: 10em 0;
+	.content {
+		width: 98%;
+		margin: auto;
+		@include desktop {
+			width: 40%;
 		}
 	}
 }

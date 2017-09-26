@@ -761,8 +761,66 @@ a {
 
 .top {
   background-image: url("../../../images/ds_background.png?");
-  height: 100vh; }
+  height: 100vh;
+  overflow: hidden; }
 
+.clouds {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  height: 380px;
+  top: 70px; }
+
+.cloud {
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-name: cloud-move;
+  -webkit-animation-timing-function: linear; }
+
+.ie7 .cloud, .ie6 .cloud {
+  z-index: -1; }
+
+.cloud-1 {
+  background-image: url("../../../images/cloud-1.png");
+  height: 61px;
+  left: 8%;
+  top: 20px;
+  width: 176px;
+  animation-duration: 40s; }
+
+.cloud-2 {
+  background-image: url("../../../images/cloud-2.png");
+  height: 65px;
+  left: -5%;
+  top: 200px;
+  width: 189px;
+  animation-duration: 45s; }
+
+.cloud-3 {
+  background-image: url("../../../images/cloud-3.png");
+  height: 61px;
+  left: 90%;
+  top: 0;
+  width: 176px;
+  animation-duration: 30s; }
+
+.cloud-4 {
+  background-image: url("../../../images/cloud-4.png");
+  height: 31px;
+  left: 35%;
+  top: 300px;
+  width: 274px;
+  -webkit-animation-duration: 50s; }
+
+@-webkit-keyframes cloud-move {
+  from {
+    left: 100%;
+    -webkit-transform: translateX(0%); }
+  to {
+    left: -50%;
+    -webkit-transform: translateX(-100%); } }
 .wrap {
   position: relative; }
   .wrap.wrap-center {
@@ -773,19 +831,29 @@ a {
     position: relative; }
     .wrap.wrap-center h2 {
       position: absolute;
+      font-size: 1.5em;
       width: 100%;
-      margin: 100px 0 0 0;
+      margin: 70px 0 0 0;
       color: #fff;
       font-weight: 200; }
+      @media only screen and (min-width: 601px) {
+        .wrap.wrap-center h2 {
+          margin: 100px 0 0 0; } }
 
 .logo {
   background-image: url("../../../images/ds_logo.png");
-  width: 380px;
-  height: 156px;
+  background-repeat: no-repeat;
+  width: 250px;
+  height: 100px;
   margin: auto;
-  cursor: pointer; }
-  .logo.logo-prices {
-    background-image: url("../../../images/ds_logo_tarifs.png"); }
+  cursor: pointer;
+  background-size: contain; }
+  @media only screen and (min-width: 601px) {
+    .logo {
+      width: 380px;
+      height: 156px; } }
+  .logo.logo-competency {
+    background-image: url("../../../images/ds_logo_competency.png"); }
 
 .scroll_to {
   position: fixed;
@@ -801,15 +869,23 @@ a {
 
 .infos {
   position: relative;
-  background-image: #fff;
-  padding: 20px; }
+  background-image: #fff; }
   .infos .grid {
-    margin: 60px 6%; }
+    padding: 30px 6%; }
+    .infos .grid.colored {
+      background-color: #e14747;
+      background-image: url("../../../images/ds_background.png");
+      background-position: top center; }
+      .infos .grid.colored .column h1, .infos .grid.colored .column p {
+        color: #fff !important; }
     .infos .grid .column {
       text-align: center; }
       .infos .grid .column.text {
-        padding-top: 4em;
+        padding-top: 0;
         padding-bottom: 20px; }
+        @media only screen and (min-width: 993px) {
+          .infos .grid .column.text {
+            padding-top: 4em; } }
         .infos .grid .column.text h1 {
           font-weight: 300;
           color: #585858;
@@ -818,17 +894,25 @@ a {
         .infos .grid .column.text p {
           color: rgba(0, 0, 0, 0.55);
           font-size: 1.25em; }
+      .infos .grid .column img {
+        max-width: 100%; }
 
 .nav {
   position: fixed;
   top: 0;
   color: #fff;
-  height: 42px;
+  height: 60px;
   width: 100%;
-  z-index: 2;
-  transition: all .15s linear; }
+  z-index: 4;
+  transition: all .15s linear;
+  background-color: rgba(0, 0, 0, 0.1); }
+  @media only screen and (min-width: 601px) {
+    .nav {
+      background-color: transparent;
+      height: 42px; } }
   .nav.scrolling {
-    background-color: #fff; }
+    background-color: #fff;
+    box-shadow: 0 5px 44px rgba(0, 0, 0, 0.05); }
     .nav.scrolling .logo_mini {
       background-image: url("../../../images/ds_logo_mini_colored.png"); }
     .nav.scrolling .menu a {
@@ -839,11 +923,19 @@ a {
     height: 42px;
     background-image: url("../../../images/ds_logo_mini.png");
     float: left;
+    display: none;
     margin: 0 20px; }
+    @media only screen and (min-width: 601px) {
+      .nav .logo_mini {
+        display: inline-block; } }
   .nav .menu {
     float: left;
     height: 42px;
-    line-height: 42px; }
+    line-height: 42px;
+    display: none; }
+    @media only screen and (min-width: 601px) {
+      .nav .menu {
+        display: block; } }
     .nav .menu a {
       color: #fff;
       opacity: 0.65;
@@ -852,11 +944,52 @@ a {
       display: inline-block; }
       .nav .menu a:hover {
         opacity: 1; }
+  .nav .nav-button {
+    height: 100%;
+    line-height: 4.5; }
+    @media only screen and (min-width: 993px) {
+      .nav .nav-button {
+        display: none; } }
+    .nav .nav-button.scrolling i {
+      color: #e14747; }
+    .nav .nav-button i {
+      font-size: 2.2em;
+      padding: 0 0.4em;
+      cursor: pointer;
+      transition: all .15s linear; }
+      .nav .nav-button i:hover {
+        opacity: 0.5; }
+
+.responsive-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  background-color: #3d3d3d;
+  width: 100%;
+  padding: 70px 10px 10px; }
+  .responsive-nav.show {
+    display: block; }
+  .responsive-nav a {
+    color: rgba(255, 255, 255, 0.9);
+    display: block;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+    .responsive-nav a:nth-last-child(1) {
+      border-bottom-width: 0; }
+  @media only screen and (min-width: 601px) {
+    .responsive-nav {
+      display: none; } }
 
 .footer {
   background-color: #333333;
-  padding: 5em 0;
+  padding: 2em 0;
   text-align: center; }
+  @media only screen and (min-width: 601px) {
+    .footer {
+      padding: 5em 0; } }
   .footer .copyright {
     color: rgba(255, 255, 255, 0.6);
     font-size: .9em;
@@ -867,5 +1000,93 @@ a {
     cursor: pointer; }
     .footer img:hover {
       opacity: 0.5; }
+
+img {
+  max-width: 100%; }
+
+.content {
+  padding: 20px; }
+
+.button {
+  display: inline-block;
+  position: relative;
+  padding: .6em 2.2em;
+  border: 3px #e14747 solid;
+  cursor: pointer; }
+  .button:hover {
+    background-color: #e14747;
+    color: #fff !important; }
+  .button.white {
+    background-color: transparent;
+    border-color: #fff;
+    color: #fff !important; }
+    .button.white:hover {
+      background-color: #fff;
+      color: #3d3d3d !important; }
+
+.show .grid {
+  margin: 4em 0;
+  border-bottom: 1px #ddd solid; }
+  @media only screen and (min-width: 993px) {
+    .show .grid {
+      border: none; } }
+  .show .grid .column h3 {
+    font-size: 1.6em;
+    color: rgba(0, 0, 0, 0.7); }
+  .show .grid .column p {
+    color: rgba(0, 0, 0, 0.55); }
+
+h2 {
+  font-size: 2.5em;
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.4); }
+  h2 strong {
+    color: #e14747;
+    text-decoration: underline; }
+
+.technologies, .whyus {
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 50px; }
+
+.whyus {
+  margin-bottom: 8em; }
+  .whyus p {
+    font-size: 1.3em;
+    color: rgba(0, 0, 0, 0.5);
+    padding: 0 .8em; }
+    @media only screen and (min-width: 993px) {
+      .whyus p {
+        padding: 0 3em; } }
+
+.field {
+  padding: 1em 1em;
+  border: none;
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  margin-bottom: 1em;
+  outline: 0;
+  transition: all .15s linear; }
+  .field:focus {
+    box-shadow: inset 0 -4px 0 0 #e14747; }
+  .field:after {
+    content: '';
+    clear: both; }
+
+textarea {
+  font-family: inherit; }
+
+.contact {
+  background-color: #3d3d3d;
+  width: 100%;
+  position: relative;
+  padding: 10em 0; }
+  .contact .content {
+    width: 98%;
+    margin: auto; }
+    @media only screen and (min-width: 993px) {
+      .contact .content {
+        width: 40%; } }
 
 /*# sourceMappingURL=ds_style.css.map */
