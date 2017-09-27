@@ -2,16 +2,28 @@
 
 <div class="contact">
     <div class="content">
-        <form action="send" method="POST">
-            <input type="text" placeholder="Prénom" name="lastname" class="field">
-            <input type="text" placeholder="Nom" name="firstname" class="field">
-            <input type="email" placeholder="Adresse mail" name="email" class="field">
-            <input type="text" placeholder="Numéro de téléphone (+225)" name="phonenumber" class="field">
-            <textarea name="description" id="" cols="30" rows="10" placeholder="Description du projet" class="field"></textarea>
-            <textarea name="features" id="" cols="30" rows="10" placeholder="Fonctionnalités souhaitées" class="field"></textarea>
+        <div>
+            <% if(errors) { %>
+            <div class="contactError">
+             <%   errors.forEach(function (error) { %>
+                        <li>- <%= error.msg %></li>
+                <% }); %>
+            </div>
+            <% } %>
+        </div>
+        <form action="contact" method="POST">
+            <input type="text" placeholder="Nom" name="firstname" class="field" value="<%= value.firstname %>">
+            <input type="text" placeholder="Prénom" name="lastname" class="field" value="<%= value.lastname %>">
+            <input type="email" placeholder="Adresse mail" name="email" class="field" value="<%= value.email %>">
+            <input type="text" placeholder="Numéro de téléphone (+225)" name="phonenumber" class="field" value="<%= value.phonenumber %>">
+            <textarea name="description" id="" cols="30" rows="10" placeholder="Description du projet" class="field"><%= value.description %></textarea>
+            <textarea name="features" id="" cols="30" rows="10" placeholder="Fonctionnalités souhaitées" class="field"><%= value.features %></textarea>
             <select name="service" id="" class="field">
                 <option value="0">Choisir un service</option>
-                <%- serviceOptions %>
+                <option value="ecm">Boutique en ligne</option>
+                <option value="snd">Réseau social</option>
+                <option value="wp">Portail web</option>
+                <option value="pb">Blog personnel</option>
             </select>
             <button class="button white">Envoyer</button>
         </form>

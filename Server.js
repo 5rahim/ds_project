@@ -9,6 +9,7 @@ var logger = require("morgan");
 var helmet = require("helmet");
 var cors = require("cors");
 var path = require("path");
+var expressValidator = require("express-validator");
 var sassMiddleware = require("node-sass-middleware");
 // Core/App
 var DataAccess_1 = require("./core/DataAccess");
@@ -31,6 +32,7 @@ var Server = (function () {
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(bodyParser.json());
         this.app.use(cookieParser());
+        this.app.use(expressValidator());
         this.app.use(sassMiddleware({
             src: path.join(__dirname, 'assets'),
             dest: path.join(__dirname, 'assets'),

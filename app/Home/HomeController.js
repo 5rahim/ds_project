@@ -14,7 +14,7 @@ var HomeController = (function () {
         this.router.get('/', function (req, res, next) { return ShowAction_1.default.invoke(req, res, next); });
         this.router.get('/services', function (req, res, next) { return ShowCompetencyAction_1.default.invoke(req, res, next); });
         this.router.get('/contact', function (req, res, next) { return ShowContactAction_1.default.invoke(req, res, next); });
-        this.router.post('/send', function (req, res, next) { return SendAction_1.default.invoke(req, res, next); });
+        this.router.post('/contact', function (req, res, next) { return SendAction_1.default.invoke(req, res, next); });
     };
     return HomeController;
 }());

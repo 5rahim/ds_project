@@ -7,6 +7,7 @@ import * as logger from 'morgan';
 import * as helmet from 'helmet';
 import * as cors from 'cors';
 import * as path from 'path';
+import * as expressValidator from 'express-validator';
 import * as sassMiddleware from 'node-sass-middleware';
 
 // Core/App
@@ -39,6 +40,7 @@ class Server {
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(bodyParser.json());
         this.app.use(cookieParser());
+        this.app.use(expressValidator());
         this.app.use(sassMiddleware({
             src: path.join(__dirname, 'assets'),
             dest: path.join(__dirname, 'assets'),
