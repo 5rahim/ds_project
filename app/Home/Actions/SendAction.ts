@@ -9,7 +9,7 @@ export class SendAction {
             service: 'gmail',
             auth: {
                 user: 'digitalstack.contact@gmail.com',
-                pass: 'chevraux15'
+                pass: 'chevraux14'
             }
         });
 
@@ -19,8 +19,6 @@ export class SendAction {
         req.checkBody('phonenumber', 'Numéro de téléphone vide').notEmpty();
         req.checkBody('description', 'Champs description vide').notEmpty();
         req.checkBody('features', ' Champs fonctionnalités vide').notEmpty();
-        req.checkBody('lastname', 'Prénom invalide').isAlpha();
-        req.checkBody('firstname', 'Nom invalide').isAlpha();
         req.checkBody('email', 'Adresse mail invalide').isEmail();
         req.checkBody('phonenumber', 'Numéro de téléphone invalide').isInt();
 
