@@ -177,9 +177,33 @@
 		background-color: transparent;
 		height: 42px;
 	}
+	.social	{
+		float: right;
+		margin-right: 20px;
+		cursor: default;
+		transition: all .15s linear;
+		color: $white;
+		height: 60px;
+		line-height: 60px;
+		font-size: 1em;
+		@include desktop {
+			height: 42px;
+			color: $white;
+			line-height: 42px;
+		}
+		&:hover {
+			box-shadow: inset 0 -2px 0 0 rgba($white,1);
+		}
+	}
 	&.scrolling {
 		background-color: $white;
 		box-shadow: 0 5px 44px rgba(0,0,0,0.05);
+		.social {
+			color: $color-one;
+			&:hover {
+				box-shadow: inset 0 -2px 0 0 rgba($color-one,1);
+			}
+		}
 		.logo_mini {
 			background-image: url('../../../images/ds_logo_mini_colored.png');
 		}
@@ -417,4 +441,9 @@ textarea {
 		color: $white;
 		margin-bottom: .4em;
 	}
+}
+
+.social {
+	color: rgba($white,0.9);
+	margin-bottom: 1.5em;
 }
